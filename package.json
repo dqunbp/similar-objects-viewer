@@ -1,0 +1,17 @@
+{
+  "name": "similar-objects-viewer",
+  "version": "1.0.0",
+  "description": "gis objects view tool",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "dqunbp",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "parcel-bundler": "^1.10.3",
+    "sass": "^1.14.3"
+  }
+}
