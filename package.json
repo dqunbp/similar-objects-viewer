@@ -8,7 +8,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "build": "parcel build index.html",
+    "build": "parcel build index.html --public-url './'",
     "dev": "parcel index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
