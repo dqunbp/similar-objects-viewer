@@ -1,3 +1,4 @@
 other/
 node_modules/
 .cache/
+dist/

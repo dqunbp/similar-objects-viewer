@@ -3,12 +3,11 @@ function humanFileSize(size) {
   return Math.round(100 * (size / Math.pow(1024, i))) / 100 + ' ' + ['B', 'kB', 'MB', 'GB'][i];
 }
 
-function onFileDrop(e, callbackFn) {
+function onFileDropArea(e, callbackFn) {
   e.preventDefault();
 
   var reader = new FileReader();
   var dropArea = e.target;
-
 
   reader.readAsText(e.dataTransfer.files[0]);
   dropArea.innerHTML += "<br/>";
@@ -33,4 +32,4 @@ function onFileDrop(e, callbackFn) {
   };
 };
 
-export { onFileDrop };
+export { onFileDropArea };
