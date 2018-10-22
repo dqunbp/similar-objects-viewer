@@ -8,7 +8,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "build": "parcel build index.html --public-url './'",
+    "build": "parcel build -d build --public-url '/build/' index.html",
     "dev": "parcel index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,6 +16,7 @@
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
+    "d3-fetch": "^1.1.2",
     "parcel-bundler": "^1.10.3",
     "sass": "^1.14.3"
   }

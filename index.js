@@ -1,46 +1,30 @@
-import './styles/styles.scss'
-import { onFileDrop } from './droppedFileReader'
+import './styles/styles.scss';
+import { onFileDropArea } from './droppedFileToArea';
+import { onFileDropMap } from './droppedFileToMap';
+import { defaultLayerStyle, highlightFeatureStyle } from './constants';
 
 var dropFileArea = document.getElementById('drop');
 dropFileArea.ondragover = function () { return false; };
 dropFileArea.ondragend = function () { return false; };
-dropFileArea.ondrop = (e) => onFileDrop(e, onGeojsonLoad);
+dropFileArea.ondrop = (e) => onFileDropArea(e, onGeojsonLoad);
 
 
-var google = L.tileLayer("http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}&s=Ga", {id: 0, attribution: false}),
-  osm = L.tileLayer("http://a.tile.openstreetmap.org/{z}/{x}/{y}.png", {id: 1, attribution: false});
+var google = L.tileLayer("http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}&s=Ga", { id: 0, attribution: false }),
+  osm = L.tileLayer("http://a.tile.openstreetmap.org/{z}/{x}/{y}.png", { id: 1, attribution: false });
 
 var baseMaps = {
   "Google": google,
   "OSM": osm
 };
-var leafletMap = L.map('map', {
+
+var mapNode = document.getElementById('map');
+var leafletMap = L.map(mapNode, {
   center: [58.623858, 49.666106],
   zoom: 12,
   layers: [google]
 });
 
 L.control.layers(baseMaps).addTo(leafletMap);
-
-var defaultLayerStyle = {
-  weight: 2,
-  color: 'gray',
-  opacity: .5,
-  fillColor: 'lightgray',
-  fill: true,
-  radius: 6,
-  fillOpacity: 0.4
-};
-
-var highlightFeatureStyle = {
-  weight: 2,
-  color: 'red',
-  opacity: .4,
-  fillColor: 'red',
-  fill: true,
-  radius: 6,
-  fillOpacity: 0.3
-};
 
 var tileOptions = {
   zIndex: 201,
@@ -67,8 +51,8 @@ function unHighlightFeature(featureId, layer = tileLayer) {
   layer.resetFeatureStyle(featureId)
 }
 
-function onGeojsonLoad(data) {
-  console.log('callback called with ', data);
+
+function addDataToMap(data) {
   if (tileLayer) {
     tileLayer.remove();
   }
@@ -96,3 +80,19 @@ function onGeojsonLoad(data) {
     })
   })
 }
+
+function onGeojsonLoad(data) {
+  console.log('callback called with ', data);
+  addDataToMap(data);
+}
+
+
+// mapNode.ondragover = function () { return false; };
+// mapNode.ondragend = function () { return false; };
+// mapNode.ondrop = (e) => { onFileDropMap(e, onGeojsonLoad); }
+
+// import { json } from 'd3-fetch'
+// var jsonData = require('./other/sim.geojson')
+// leafletMap.on('load',
+//   json(jsonData).then((data) => { addDataToMap(data); })
+// )
