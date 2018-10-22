@@ -1,1 +1,0 @@
-body,html{margin:0;padding:0}body{min-height:100vh;font-family:Arial,Helvetica,sans-serif;font-size:12px}#map,body{display:flex}#map{flex:1 1 100%}#drop{z-index:1000;position:absolute;left:0;bottom:0;width:200px;height:20%;background-color:#fff;border:3px dashed #87ceeb;border-radius:4px;padding:5px;opacity:.7}
