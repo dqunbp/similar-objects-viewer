@@ -87,9 +87,9 @@ function onGeojsonLoad(data) {
 }
 
 
-// mapNode.ondragover = function () { return false; };
-// mapNode.ondragend = function () { return false; };
-// mapNode.ondrop = (e) => { onFileDropMap(e, onGeojsonLoad); }
+mapNode.ondragover = function () { return false; };
+mapNode.ondragend = function () { return false; };
+mapNode.ondrop = (e) => { onFileDropMap(e, onGeojsonLoad); }
 
 // import { json } from 'd3-fetch'
 // var jsonData = require('./other/sim.geojson')
